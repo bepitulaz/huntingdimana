@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container main-container">
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <form class="form-inline form-home" method="POST" action="/findmap">
+                <div class="form-group">
+                    <label for="level">Level</label>
+                    <select name="level" id="level" class="form-control">
+                        {% for x in range(99) %}
+                        <option value="{{x}}">{{x}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="experience">EXP yang diharapkan</label>
+                    <select name="experience" id="experience" class="form-control">
+                        <option value="full">100%</option>
+                        <option value="over">Lebih dari 100%</option>
+                        <option value="ninetyfive">95%</option>
+                        <option value="ninety">90%</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default">Cari Peta</button>
+            </form>
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <h3>Updates</h3>
+            <p><b>Version 1.0.0 - 1 April 2017</b></p>
+            <ul>
+                <li>Pemilihan peta berdasarkan base level pemain</li>
+                <li>Pemain dapat memilih peta sesuai experience yang diharapkan. Mekanik perhitungan experience versi renewal mengikuti <a href="http://irowiki.org/wiki/Experience" target="_blank">iRO Wiki</a>.</li>
+                <li>Data peta dan monster diambil dari <a href="https://db.idrowiki.org/klasik/" target="_blank">idRO wiki</a>.
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+
+            <h4>FAQ</h4>
+            <p><b>"Hunting Di Mana" itu apa?</b></p>
+            <p>Ini adalah aplikasi untuk mencari lokasi hunting biar ga bosan saat leveling di game Ragnarok Indonesia.</p>
+            <p><b>Apakah ini resmi dari Gravindo?</b></p>
+            <p>Tentu tidak. Ini cuma keisengan saya saja, karena saya orangnya malas party. Jadi harus tau tempat solo hunt yang pas.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

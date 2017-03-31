@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container main-container">
+    <div class="row form-map">
+        <div class="col-xs-12 col-md-12">
+            <form class="form-inline form-home" method="POST" action="/findmap">
+                <div class="form-group">
+                    <label for="level">Level</label>
+                    <select name="level" id="level" class="form-control">
+                        {% for x in range(99) %}
+                            {% if x == base_level %}
+                            <option value="{{x}}" selected>{{x}}</option>
+                            {% else %}
+                            <option value="{{x}}">{{x}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="experience">EXP yang diharapkan</label>
+                    <select name="experience" id="experience" class="form-control">
+                        <option value="full" {% if experience == 'full' %}selected{% endif %}>100%</option>
+                        <option value="over" {% if experience == 'over' %}selected{% endif %}>Lebih dari 100%</option>
+                        <option value="ninetyfive" {% if experience == 'ninetyfive' %}selected{% endif %}>95%</option>
+                        <option value="ninety" {% if experience == 'ninety' %}selected{% endif %}>90%</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default">Cari Peta</button>
+            </form>
+        </div>
+    </div>
+    {% for map in map_data %}
+    <div class="row">
+        <div class="col-xs-12 col-md-3">
+            <h2><a href="{{ map.map_url }}" target="_blank">{{ map.map_title }}</a></h2>
+            <p><a href="{{ map.map_url }}" target="_blank">{{ map.map_name }}</a></p>
+            <img src="{{ map.map_image_url }}" class="img-responsive" alt="{{ map.map_title }}">
+        </div>
+        <div class="col-xs-12 col-md-9">
+            <h2>Monster di peta ini:</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Level</th>
+                            <th>Jumlah</th>
+                            <th>Respawn</th>
+                            <th>HP</th>
+                            <th>EXP</th>
+                            <th>Job EXP</th>
+                            <th>95% Flee</th>
+                            <th>100% Hit</th>
+                            <th>DEF</th>
+                            <th>MDEF</th>
+                            <th>Ukuran</th>
+                            <th>Race</th>
+                            <th>Elemen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for monster in map.map_monsters %}
+                        <tr>
+                            <td><a href="{{monster.url}}">{{monster.name}}</a></td>
+                            <td>{{monster.level}}</td>
+                            <td>{{monster.jumlah}}</td>
+                            <td>{{monster.respawn}}</td>
+                            <td>{{monster.hp}}</td>
+                            <td>{{monster.exp}}</td>
+                            <td>{{monster.jexp}}</td>
+                            <td>{{monster["95_flee"]}}</td>
+                            <td>{{monster["100_hit"]}}</td>
+                            <td>{{monster.def}}</td>
+                            <td>{{monster.mdef}}</td>
+                            <td>{{monster.ukuran}}</td>
+                            <td>{{monster.race}}</td>
+                            <td>{{monster.elemen}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

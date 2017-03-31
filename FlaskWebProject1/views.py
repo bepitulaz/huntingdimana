@@ -5,17 +5,17 @@ import json
 from flask import Flask, jsonify, render_template, request
 from experience import Experience
 from analytic import Analytic
-from FlaskWebProject1 import APP
+from FlaskWebProject1 import app
 
 with open('./data/list_of_map.json') as data_json:
     MAP_DATA = json.load(data_json)
 
-@APP.route('/', methods=['GET'])
+@app.route('/', methods=['GET'])
 def index():
     """The home route"""
     return render_template('home.html')
 
-@APP.route('/findmap', methods=['POST'])
+@app.route('/findmap', methods=['POST'])
 def level():
     """Get the map based on player's current level"""
     maps_analytic = Analytic(MAP_DATA)

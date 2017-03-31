@@ -7,7 +7,7 @@ from experience import Experience
 from analytic import Analytic
 from FlaskWebProject1 import app
 
-with open('./data/list_of_map.json') as data_json:
+with open('FlaskWebProject1/data/list_of_map.json') as data_json:
     MAP_DATA = json.load(data_json)
 
 @app.route('/', methods=['GET'])

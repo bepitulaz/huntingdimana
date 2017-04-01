@@ -30,6 +30,7 @@
             </form>
         </div>
     </div>
+    {% if map_data %}
     {% for map in map_data %}
     <div class="row">
         <div class="col-xs-12 col-md-3">
@@ -85,5 +86,12 @@
         </div>
     </div>
     {% endfor %}
+    {% else %}
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <p>Tidak ada monster yang sesuai kriteriamu untuk solo hunt. Coba turunkan standar EXP-mu.</p>
+        </div>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

@@ -16,6 +16,7 @@ class ExpRate(object):
     LARGE = 2
     HUGE = 3
     SAD = 4
+    MODERATE = 5
 
 class ExpTable(object):
     """Table of base and job experience."""

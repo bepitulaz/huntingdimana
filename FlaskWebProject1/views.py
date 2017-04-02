@@ -35,5 +35,7 @@ def level():
         filtered_map = maps_analytic.classic_exp_filter(base_level, ExpRate.LITTLE)
     elif experience == '5':
         filtered_map = maps_analytic.classic_exp_filter(base_level, ExpRate.SAD)
+    elif experience == '6':
+        filtered_map = maps_analytic.classic_exp_filter(base_level, ExpRate.MODERATE)
 
     return render_template('map.html', map_data=filtered_map, base_level=base_level, experience=experience, next_exp=next_exp)

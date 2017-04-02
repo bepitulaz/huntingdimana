@@ -42,8 +42,11 @@ class Analytic(object):
         elif target_exp == ExpRate.SMALL:
             max_exp = 2
             min_exp = 1
-        elif target_exp == ExpRate.LITTLE:
+        elif target_exp == ExpRate.MODERATE:
             max_exp = 1
+            min_exp = 0.5
+        elif target_exp == ExpRate.LITTLE:
+            max_exp = 0.5
             min_exp = 0.1
         elif target_exp == ExpRate.SAD:
             max_exp = 0.1

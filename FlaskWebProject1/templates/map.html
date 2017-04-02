@@ -8,7 +8,7 @@
                 <div class="form-group">
                     <label for="level">Level</label>
                     <select name="level" id="level" class="form-control">
-                        {% for x in range(99) %}
+                        {% for x in range(10, 99) %}
                             {% if x == base_level %}
                             <option value="{{x}}" selected>{{x}}</option>
                             {% else %}
@@ -18,12 +18,13 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="experience">EXP yang dihasilkan</label>
+                    <label for="experience">Target % Base EXP/Monster</label>
                     <select name="experience" id="experience" class="form-control">
-                        <option value="full" {% if experience == 'full' %}selected{% endif %}>100%</option>
-                        <option value="over" {% if experience == 'over' %}selected{% endif %}>Lebih dari 100%</option>
-                        <option value="ninetyfive" {% if experience == 'ninetyfive' %}selected{% endif %}>95%</option>
-                        <option value="ninety" {% if experience == 'ninety' %}selected{% endif %}>90%</option>
+                        <option value="1" {% if experience == '1' %}selected{% endif %}>4%-6%</option>
+                        <option value="2" {% if experience == '2' %}selected{% endif %}>2%-4%</option>
+                        <option value="3" {% if experience == '3' %}selected{% endif %}>1%-2%</option>
+                        <option value="4" {% if experience == '4' %}selected{% endif %}>0.1%-1%</option>
+                        <option value="5" {% if experience == '5' %}selected{% endif %}>0.001%-0.1%</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-default">Cari Peta</button>
@@ -69,7 +70,7 @@
                             <td>{{monster.jumlah}}</td>
                             <td>{{monster.respawn}}</td>
                             <td>{{monster.hp}}</td>
-                            <td>{{monster.exp}}</td>
+                            <td>{{monster.exp}} <b>({{'{0:0.4f}'.format(monster.exp/next_exp*100)}}%)</b></td>
                             <td>{{monster.jexp}}</td>
                             <td>{{monster["95_flee"]}}</td>
                             <td>{{monster["100_hit"]}}</td>
@@ -89,7 +90,7 @@
     {% else %}
     <div class="row">
         <div class="col-xs-12 col-md-12">
-            <p>Tidak ada monster yang sesuai kriteriamu untuk solo hunt. Coba turunkan standar EXP-mu.</p>
+            <p>Tidak ada monster yang sesuai kriteriamu untuk solo hunt. Coba ganti target EXP-mu.</p>
         </div>
     </div>
     {% endif %}

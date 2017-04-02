@@ -3,7 +3,7 @@ Routes and views for the flask application.
 """
 import json
 from flask import Flask, jsonify, render_template, request
-from experience import Experience
+from experience import ExpRate, ExpTable
 from analytic import Analytic
 from FlaskWebProject1 import app
 
@@ -22,13 +22,18 @@ def level():
     base_level = int(request.form['level'])
     experience = request.form['experience']
 
-    if experience == 'full':
-        filtered_map = maps_analytic.filter_by_exp(base_level, Experience.FULL)
-    elif experience == 'ninetyfive':
-        filtered_map = maps_analytic.filter_by_exp(base_level, Experience.NINETY_FIVE)
-    elif experience == 'ninety':
-        filtered_map = maps_analytic.filter_by_exp(base_level, Experience.NINETY)
-    elif experience == 'over':
-        filtered_map = maps_analytic.filter_by_exp(base_level, Experience.OVER)
+    lvl_row = [row for row in ExpTable.BASE if row[0] == base_level]
+    next_exp = lvl_row[0][2]
 
-    return render_template('map.html', map_data=filtered_map, base_level=base_level, experience=experience)
+    if experience == '1':
+        filtered_map = maps_analytic.classic_exp_filter(base_level, ExpRate.HUGE)
+    elif experience == '2':
+        filtered_map = maps_analytic.classic_exp_filter(base_level, ExpRate.LARGE)
+    elif experience == '3':
+        filtered_map = maps_analytic.classic_exp_filter(base_level, ExpRate.SMALL)
+    elif experience == '4':
+        filtered_map = maps_analytic.classic_exp_filter(base_level, ExpRate.LITTLE)
+    elif experience == '5':
+        filtered_map = maps_analytic.classic_exp_filter(base_level, ExpRate.SAD)
+
+    return render_template('map.html', map_data=filtered_map, base_level=base_level, experience=experience, next_exp=next_exp)

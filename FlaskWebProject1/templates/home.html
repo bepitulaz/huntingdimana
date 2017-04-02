@@ -8,25 +8,34 @@
                 <div class="form-group">
                     <label for="level">Level</label>
                     <select name="level" id="level" class="form-control">
-                        {% for x in range(99) %}
+                        {% for x in range(10,99) %}
                         <option value="{{x}}">{{x}}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="experience">EXP yang dihasilkan</label>
+                    <label for="experience">Target % Base EXP/Monster</label>
                     <select name="experience" id="experience" class="form-control">
-                        <option value="full">100%</option>
-                        <option value="over">Lebih dari 100%</option>
-                        <option value="ninetyfive">95%</option>
-                        <option value="ninety">90%</option>
+                        <option value="1">4%-6%</option>
+                        <option value="2">2%-4%</option>
+                        <option value="3">1%-2%</option>
+                        <option value="4">0.1%-1%</option>
+                        <option value="5">0.001%-0.1%</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-default">Cari Peta</button>
             </form>
+            <div class="image-info">
+                <img src="/static/img/statusbar.PNG" alt="status bar" class="img-responsive">
+            </div>
         </div>
         <div class="col-xs-12 col-md-4">
             <h3>Updates</h3>
+            <p><b>Version 1.2.0 - 2 April 2017</b></p>
+            <ul>
+                <li>Mengganti algoritma EXP dengan EXP klasik</li>
+                <li>Pemain dapat mengetahui 1 monster menghasilkan berapa % pada EXP bar sesuai level pemain</li>
+            </ul>
             <p><b>Version 1.1.0 - 1 April 2017</b></p>
             <ul>
                 <li>Menambahkan pesan jika tidak ada monster yang sesuai</li>
@@ -47,8 +56,6 @@
             <p>Ini adalah aplikasi untuk mencari lokasi hunting biar ga bosan saat leveling di game Ragnarok Indonesia.</p>
             <p><b>Apakah ini resmi dari Gravindo?</b></p>
             <p>Tentu tidak. Ini cuma keisengan saya saja, karena saya orangnya malas party. Jadi harus tau tempat solo hunt yang pas.</p>
-            <p><b>Kok di level 85 sampai dengan level 94 datanya tidak keluar ya?</b></p>
-            <p>Itu karena data map yang digunakan menggunakan yang klasik. Di map klasik, monster level maksimal adalah 81, kemudian loncat ke monster level 97. Sehingga jika kamu pilih EXP 100%, tidak akan ada datanya.</p>
             <p><b>Data diambil dari mana?</b></p>
             <p>Dari <a href="https://db.idrowiki.org/klasik">idRO Wiki</a>.</p>
         </div>

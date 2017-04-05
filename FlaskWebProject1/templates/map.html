@@ -28,6 +28,25 @@
                         <option value="5" {% if experience == '5' %}selected{% endif %}>0.001%-0.1%</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="jobclass">Job Class</label>
+                    <select name="jobclass" id="jobclass" class="form-control">
+                        <option value="1" {% if jobclass == '1' %}selected{% endif %}>Job class 1</option>
+                        <option value="2" {% if jobclass == '2' %}selected{% endif %}>Job class 2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="joblevel">Job Level</label>
+                    <select name="joblevel" id="joblevel" class="form-control">
+                        {% for x in range(1, 51) %}
+                            {% if x == job_level %}
+                            <option value="{{x}}" selected>{{x}}</option>
+                            {% else %}
+                            <option value="{{x}}">{{x}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-default">Cari Peta</button>
             </form>
         </div>
@@ -48,11 +67,11 @@
                         <tr>
                             <th>Nama</th>
                             <th>Level</th>
-                            <th>Jumlah</th>
-                            <th>Respawn</th>
                             <th>HP</th>
                             <th>EXP</th>
                             <th>Job EXP</th>
+                            <th>Jumlah</th>
+                            <th>Respawn</th>
                             <th>95% Flee</th>
                             <th>100% Hit</th>
                             <th>DEF</th>
@@ -68,11 +87,11 @@
                         <tr>
                             <td><a href="{{monster.url}}">{{monster.name}}</a></td>
                             <td>{{monster.level}}</td>
-                            <td>{{monster.jumlah}}</td>
-                            <td>{{monster.respawn}}</td>
                             <td>{{monster.hp}}</td>
                             <td>{{monster.exp}} <b>({{'{0:0.4f}'.format(monster.exp/next_exp*100)}}%)</b></td>
-                            <td>{{monster.jexp}}</td>
+                            <td>{{monster.jexp}} <b>({{'{0:0.4f}'.format(monster.jexp/next_job_exp*100)}}%)</b></td>
+                            <td>{{monster.jumlah}}</td>
+                            <td>{{monster.respawn}}</td>
                             <td>{{monster["95_flee"]}}</td>
                             <td>{{monster["100_hit"]}}</td>
                             <td>{{monster.def}}</td>

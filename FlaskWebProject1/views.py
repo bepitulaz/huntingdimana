@@ -20,10 +20,14 @@ def level():
     """Get the map based on player's current level"""
     maps_analytic = Analytic(MAP_DATA)
     base_level = int(request.form['level'])
+    job_level = int(request.form['joblevel'])
     experience = request.form['experience']
+    jobclass = request.form['jobclass']
 
-    lvl_row = [row for row in ExpTable.BASE if row[0] == base_level]
-    next_exp = lvl_row[0][2]
+    if jobclass == '1':
+        job_row = [row for row in ExpTable.JOB_FIRST_CLASS if row[0] == job_level]
+    elif jobclass == '2':
+        job_row = [row for row in ExpTable.JOB_SECOND_CLASS if row[0] == job_level]
 
     if experience == '1':
         filtered_map = maps_analytic.classic_exp_filter(base_level, ExpRate.HUGE)
@@ -38,4 +42,16 @@ def level():
     elif experience == '6':
         filtered_map = maps_analytic.classic_exp_filter(base_level, ExpRate.MODERATE)
 
-    return render_template('map.html', map_data=filtered_map, base_level=base_level, experience=experience, next_exp=next_exp)
+    lvl_row = [row for row in ExpTable.BASE if row[0] == base_level]
+    next_exp = lvl_row[0][2]
+    next_job_exp = job_row[0][2]
+
+    return render_template(
+        'map.html',
+        map_data=filtered_map,
+        base_level=base_level,
+        experience=experience,
+        next_exp=next_exp,
+        jobclass=jobclass,
+        next_job_exp=next_job_exp,
+        job_level=job_level)

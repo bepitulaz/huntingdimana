@@ -4,34 +4,67 @@
 <div class="container main-container">
     <div class="row">
         <div class="col-xs-12 col-md-8">
-            <form class="form-inline form-home" method="POST" action="/findmap">
-                <div class="form-group">
-                    <label for="level">Level</label>
-                    <select name="level" id="level" class="form-control">
-                        {% for x in range(10,99) %}
-                        <option value="{{x}}">{{x}}</option>
-                        {% endfor %}
-                    </select>
+            <form class="form form-home" method="POST" action="/findmap">
+                <div class="row">
+                    <div class="form-group form-group-custom col-md-6">
+                        <label for="level">Level</label>
+                        <select name="level" id="level" class="form-control">
+                            {% for x in range(10,99) %}
+                            <option value="{{x}}">{{x}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group form-group-custom col-md-6">
+                        <label for="experience">Target % Base EXP/Monster</label>
+                        <select name="experience" id="experience" class="form-control">
+                            <option value="1">4%-6%</option>
+                            <option value="2">2%-4%</option>
+                            <option value="3">1%-2%</option>
+                            <option value="6">0.5%-1%</option>
+                            <option value="4">0.1%-0.5%</option>
+                            <option value="5">0.001%-0.1%</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="experience">Target % Base EXP/Monster</label>
-                    <select name="experience" id="experience" class="form-control">
-                        <option value="1">4%-6%</option>
-                        <option value="2">2%-4%</option>
-                        <option value="3">1%-2%</option>
-                        <option value="6">0.5%-1%</option>
-                        <option value="4">0.1%-0.5%</option>
-                        <option value="5">0.001%-0.1%</option>
-                    </select>
+                <div class="row">
+                    <div class="form-group form-group-custom col-md-6">
+                        <label for="jobclass">Job Class</label>
+                        <select name="jobclass" id="jobclass" class="form-control">
+                            <option value="1">Job class 1</option>
+                            <option value="2">Job class 2</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-custom col-md-6">
+                        <label for="joblevel">Job Level</label>
+                        <select name="joblevel" id="joblevel" class="form-control">
+                            {% for x in range(1,51) %}
+                            <option value="{{x}}">{{x}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-default">Cari Peta</button>
+                <div class="row">
+                    <div class="form-group form-group-custom col-md-12">
+                        <button type="submit" class="btn btn-default">Cari Peta</button>
+                    </div>
+                </div>
             </form>
-            <div class="image-info">
-                <img src="/static/img/statusbar.PNG" alt="status bar" class="img-responsive">
+            <div class="faq-section">
+                <h4>FAQ</h4>
+                <p><b>"Hunting Di Mana" itu apa?</b></p>
+                <p>Ini adalah aplikasi untuk mencari lokasi hunting biar ga bosan saat leveling di game Ragnarok Indonesia.</p>
+                <p><b>Apakah ini resmi dari Gravindo?</b></p>
+                <p>Tentu tidak. Ini cuma keisengan saya saja, karena saya orangnya malas party. Jadi harus tau tempat solo hunt yang pas.</p>
+                <p><b>Data diambil dari mana?</b></p>
+                <p>Dari <a href="https://db.idrowiki.org/klasik">idRO Wiki</a>.</p>
             </div>
         </div>
         <div class="col-xs-12 col-md-4">
             <h3>Updates</h3>
+            <p><b>Version 1.3.0 - 5 April 2017</b></p>
+            <ul>
+                <li>Pemain dapat mengetahui prosentase job EXP yang didapat dari setiap monster.</li>
+            </ul>
             <p><b>Version 1.2.0 - 2 April 2017</b></p>
             <ul>
                 <li>Mengganti algoritma EXP dengan EXP klasik</li>
@@ -47,18 +80,6 @@
                 <li>Pemilihan peta berdasarkan base level pemain</li>
                 <li>Pemain dapat memilih peta sesuai experience yang diharapkan. Mekanik perhitungan experience versi renewal mengikuti <a href="http://irowiki.org/wiki/Experience" target="_blank">iRO Wiki</a>.</li>
             </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-md-8">
-
-            <h4>FAQ</h4>
-            <p><b>"Hunting Di Mana" itu apa?</b></p>
-            <p>Ini adalah aplikasi untuk mencari lokasi hunting biar ga bosan saat leveling di game Ragnarok Indonesia.</p>
-            <p><b>Apakah ini resmi dari Gravindo?</b></p>
-            <p>Tentu tidak. Ini cuma keisengan saya saja, karena saya orangnya malas party. Jadi harus tau tempat solo hunt yang pas.</p>
-            <p><b>Data diambil dari mana?</b></p>
-            <p>Dari <a href="https://db.idrowiki.org/klasik">idRO Wiki</a>.</p>
         </div>
     </div>
 </div>

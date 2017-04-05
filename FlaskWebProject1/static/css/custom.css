@@ -15,6 +15,10 @@
     margin-bottom: 30px;
 }
 
-.image-info {
-    margin-top: 20px;
+.form-group-custom {
+    padding: 0 20px 0 0;
+}
+
+.faq-section {
+    padding-top: 60px;
 }

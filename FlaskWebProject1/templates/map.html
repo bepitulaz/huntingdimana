@@ -89,7 +89,11 @@
                             <td>{{monster.level}}</td>
                             <td>{{monster.hp}}</td>
                             <td>{{monster.exp}} <b>({{'{0:0.4f}'.format(monster.exp/next_exp*100)}}%)</b></td>
+                            {% if next_job_exp > 0 %}
                             <td>{{monster.jexp}} <b>({{'{0:0.4f}'.format(monster.jexp/next_job_exp*100)}}%)</b></td>
+                            {% else %}
+                            <td>{{monster.jexp}} <b>(0%)</b></td>
+                            {% endif %}
                             <td>{{monster.jumlah}}</td>
                             <td>{{monster.respawn}}</td>
                             <td>{{monster["95_flee"]}}</td>
